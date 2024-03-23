@@ -28,9 +28,14 @@ const resetGameBtn = document.getElementById("reset-game");
 
 /*----- functions -----*/
 
-// 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise,
-//    readable and performant:
-//   3.1) Store the 9 elements that represent the squares on the page.
+init();
+
+function init() {
+  board = [null, null, null, null, null, null, null, null, null];
+  turn = 1;
+  winner = null;
+  render();
+}
 
 // 4) Upon loading the app should:
 //   4.1) Initialize the state variables:
