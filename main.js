@@ -37,6 +37,17 @@ function init() {
   render();
 }
 
+function render() {
+  renderBoard();
+  renderMessage();
+  renderControls();
+}
+
+function renderBoard() {}
+
+function renderMessage() {}
+
+function renderControls() {}
 // 4) Upon loading the app should:
 //   4.1) Initialize the state variables:
 //     4.1.1) Initialize the board array to 9 nulls to represent empty squares. The 9 elements will "map" to each square,
