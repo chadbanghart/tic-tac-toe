@@ -25,7 +25,7 @@ const msgEl = document.getElementById("msg");
 const resetGameBtn = document.getElementById("reset-game");
 
 /*----- event listeners -----*/
-document.addEventListener("click", userSquareSelect);
+document.addEventListener("click", handleSquareSelect);
 
 /*----- functions -----*/
 
@@ -67,17 +67,22 @@ function renderMessage() {
 
 function renderControls() {}
 
-// 4) Upon loading the app should:
+function handleSquareSelect(evt) {
+  const cellIdx = boardEls.findIndex((boardEl) => boardEl === evt.target);
+  // guard to ensure that the player selected a valid square
+  if (cellIdx === -1) return;
+  if (board[cellIdx] !== null) return;
+  if (winner !== null) return;
+  board[cellIdx] = turn;
+  turn *= -1;
+  render();
+}
+
+function getWinner() {}
 
 // 5) Handle a player clicking a square:
-//   5.1) Obtain the index of the square that was clicked by either:
-//     5.1.1) "Extracting" the index from an id assigned to the element in the HTML, or
-//     5.1.2) Looping through the cached square elements using a for loop and breaking out when the current square element
-//            equals the event object's target.
-//   5.2) If the board has a value at the index, immediately return because that square is already taken.
-//   5.3) If winner is not null, immediately return because the game is over.
-//   5.4) Update the board array at the index with the value of turn.
-//   5.5) Flip turns by multiplying turn by -1 (flips a 1 to -1, and vice-versa).
+
+//
 //   5.6) Set the winner variable if there's a winner:
 //     5.6.1) Loop through the each of the winning combination arrays defined.
 //     5.6.2) Total up the three board positions using the three indexes in the current combo.
