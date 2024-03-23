@@ -20,15 +20,13 @@ let turn;
 let winner;
 
 /*----- cached elements  -----*/
+const boardEls = [...document.querySelectorAll("#board > div")];
+const msgEl = document.getElementById("msg");
+const resetGameBtn = document.getElementById("reset-game");
 
 /*----- event listeners -----*/
 
 /*----- functions -----*/
-
-// 2) Define required variables used to track the state of the game:
-//   2.1) Use a board array to represent the squares.
-//   2.2) Use a turn variable to remember whose turn it is.
-//   2.3) Use a winner variable to represent three different possibilities - player that won, a tie, or game in play.
 
 // 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise,
 //    readable and performant:
