@@ -25,6 +25,7 @@ const msgEl = document.getElementById("msg");
 const resetGameBtn = document.getElementById("reset-game");
 
 /*----- event listeners -----*/
+document.addEventListener("click", userSquareSelect);
 
 /*----- functions -----*/
 
@@ -65,9 +66,8 @@ function renderMessage() {
 }
 
 function renderControls() {}
-// 4) Upon loading the app should:
 
-//   4.3) Wait for the user to click a square
+// 4) Upon loading the app should:
 
 // 5) Handle a player clicking a square:
 //   5.1) Obtain the index of the square that was clicked by either:
