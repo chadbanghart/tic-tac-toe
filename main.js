@@ -15,19 +15,15 @@ const WINNING_COMBINATIONS = [0, 1, 2];
 [6, 7, 8];
 
 /*----- state variables -----*/
+let board;
+let turn;
+let winner;
 
 /*----- cached elements  -----*/
 
 /*----- event listeners -----*/
 
 /*----- functions -----*/
-
-//   1) Define required constants:
-//   1.1) Define a colors object with keys of 'null' (when the square is empty),
-//        and players 1 & -1. The value assigned to each key represents the color to display
-//        for an empty square (null), player 1 and player -1.
-//   1.2) Define the 8 possible winning combinations, each containing three indexes of the board that make a winner
-//        if they hold the same player value.
 
 // 2) Define required variables used to track the state of the game:
 //   2.1) Use a board array to represent the squares.
