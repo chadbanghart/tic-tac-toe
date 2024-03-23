@@ -50,22 +50,23 @@ function renderBoard() {
   });
 }
 
-function renderMessage() {}
+function renderMessage() {
+  if (winner === null) {
+    msgEl.innerHTML = `Hey <span style="color: ${
+      PLAYER_COLORS[turn]
+    }">${PLAYER_COLORS[turn].toUpperCase()}</span> it is your turn`;
+  } else if (winner === "T") {
+    msgEl.innerText = "This game is a Tie";
+  } else {
+    msgEl.innerHTML = `<span style="color: ${
+      PLAYER_COLORS[winner]
+    }">${PLAYER_COLORS[winner].toUpperCase()}</span> has won the game!`;
+  }
+}
 
 function renderControls() {}
 // 4) Upon loading the app should:
 
-//   4.2) Render those state variables to the page:
-//     4.2.1) Render the board:
-//       4.2.1.1) Loop over each of the 9 elements that represent the squares on the page, and for each iteration:
-//         4.2.1.1.2) Use the index of the iteration to access the mapped value from the board array.
-//         4.3.1.1.3) Set the background color of the current element by using the value as a key on the colors lookup object (constant).
-//     4.2.2) Render a message:
-//       4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name
-//                for the player, converting it to upper case.
-//       4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
-//       4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player,
-//                converting it to uppercase.
 //   4.3) Wait for the user to click a square
 
 // 5) Handle a player clicking a square:
