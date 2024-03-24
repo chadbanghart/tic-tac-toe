@@ -81,21 +81,6 @@ function handleSquareSelect(evt) {
   render();
 }
 
-// function checkWinner() {
-//   let winner = null;
-//   WINNING_COMBINATIONS.forEach((pos1, pos2, pos3) => {
-//     let sum = pos1 + pos2 + pos3;
-//     console.log(sum);
-//     let absVal = Math.abs(sum);
-//     console.log(absVal);
-//     if (absVal === 3) {
-//       winner = board[pos1];
-//       return;
-//     } else return null;
-//   });
-//   return winner;
-// }
-
 function checkWinner(board) {
   let winner = null;
   for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
@@ -105,16 +90,11 @@ function checkWinner(board) {
 
     if (absVal === 3) {
       winner = board[a];
+      return winner;
     }
   }
-  return winner;
+  return board.includes(null) ? null : "T";
 }
-
-// 5) Handle a player clicking a square:
-
-//   5.7) If there's no winner, check if there's a tie:
-//     5.7.1) Set winner to 'T' if there are no more nulls in the board array.
-//   5.8) All state has been updated, so render the state to the page (step 4.2).
 
 // 6) Handle a player clicking the replay button:
 //   6.1) Do steps 4.1 (initialize the state variables) and 4.2 (render).
