@@ -25,7 +25,17 @@
     color: maroon;
     font-size: 4vmin;
   }
-  
+
+  p {
+    display: flex;
+    font-size: 8vh;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
   #board {
     display: grid;
     grid-template-columns: repeat(3, 10vmin);
