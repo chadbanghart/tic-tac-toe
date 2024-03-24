@@ -28,6 +28,7 @@ const resetGameBtn = document.getElementById("reset-game");
 
 /*----- event listeners -----*/
 document.addEventListener("click", handleSquareSelect);
+resetGameBtn.addEventListener("click", init);
 
 /*----- functions -----*/
 
@@ -95,6 +96,3 @@ function checkWinner(board) {
   }
   return board.includes(null) ? null : "T";
 }
-
-// 6) Handle a player clicking the replay button:
-//   6.1) Do steps 4.1 (initialize the state variables) and 4.2 (render).
