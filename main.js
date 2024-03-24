@@ -5,14 +5,16 @@ const PLAYER_COLORS = {
   "-1": "green",
 };
 
-const WINNING_COMBINATIONS = [0, 1, 2];
-[0, 3, 6];
-[0, 4, 8];
-[1, 4, 7];
-[2, 5, 8];
-[2, 4, 6];
-[3, 4, 5];
-[6, 7, 8];
+const WINNING_COMBINATIONS = [
+  [0, 1, 2],
+  [0, 3, 6],
+  [0, 4, 8],
+  [1, 4, 7],
+  [2, 5, 8],
+  [2, 4, 6],
+  [3, 4, 5],
+  [6, 7, 8],
+];
 
 /*----- state variables -----*/
 let board;
@@ -74,21 +76,42 @@ function handleSquareSelect(evt) {
   if (board[cellIdx] !== null) return;
   if (winner !== null) return;
   board[cellIdx] = turn;
+  winner = checkWinner(board);
   turn *= -1;
   render();
 }
 
-function getWinner() {}
+// function checkWinner() {
+//   let winner = null;
+//   WINNING_COMBINATIONS.forEach((pos1, pos2, pos3) => {
+//     let sum = pos1 + pos2 + pos3;
+//     console.log(sum);
+//     let absVal = Math.abs(sum);
+//     console.log(absVal);
+//     if (absVal === 3) {
+//       winner = board[pos1];
+//       return;
+//     } else return null;
+//   });
+//   return winner;
+// }
+
+function checkWinner(board) {
+  let winner = null;
+  for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
+    const [a, b, c] = WINNING_COMBINATIONS[i];
+    let sum = board[a] + board[b] + board[c];
+    let absVal = Math.abs(sum);
+
+    if (absVal === 3) {
+      winner = board[a];
+    }
+  }
+  return winner;
+}
 
 // 5) Handle a player clicking a square:
 
-//
-//   5.6) Set the winner variable if there's a winner:
-//     5.6.1) Loop through the each of the winning combination arrays defined.
-//     5.6.2) Total up the three board positions using the three indexes in the current combo.
-//     5.6.3) Convert the total to an absolute value (convert any negative total to positive).
-//     5.6.4) If the total equals 3, we have a winner! Set winner to the board's value at the index specified by the first index in the
-//            combo array. Exit the loop.
 //   5.7) If there's no winner, check if there's a tie:
 //     5.7.1) Set winner to 'T' if there are no more nulls in the board array.
 //   5.8) All state has been updated, so render the state to the page (step 4.2).
