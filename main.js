@@ -1,8 +1,14 @@
 /*----- constants -----*/
 const PLAYER_COLORS = {
   null: "white",
-  1: "red",
-  "-1": "green",
+  1: "white",
+  "-1": "white",
+};
+
+const PLAYER_MARKER = {
+  null: "",
+  1: "X",
+  "-1": "O",
 };
 
 const WINNING_COMBINATIONS = [
@@ -44,31 +50,25 @@ function init() {
 function render() {
   renderBoard();
   renderMessage();
-  renderControls();
 }
 
 function renderBoard() {
   board.forEach(function (cellVal, cellIdx) {
     const cellEl = document.getElementById(`idx${cellIdx}`);
     cellEl.style.backgroundColor = PLAYER_COLORS[cellVal];
+    cellEl.innerHTML = `<p>${PLAYER_MARKER[cellVal]}</p>`;
   });
 }
 
 function renderMessage() {
   if (winner === null) {
-    msgEl.innerHTML = `Hey <span style="color: ${
-      PLAYER_COLORS[turn]
-    }">${PLAYER_COLORS[turn].toUpperCase()}</span> it is your turn`;
+    msgEl.innerText = `Hey ${PLAYER_MARKER[turn]} it is your turn`;
   } else if (winner === "T") {
     msgEl.innerText = "This game is a Tie";
   } else {
-    msgEl.innerHTML = `<span style="color: ${
-      PLAYER_COLORS[winner]
-    }">${PLAYER_COLORS[winner].toUpperCase()}</span> has won the game!`;
+    msgEl.innerText = `${PLAYER_MARKER[winner]} has Won the game!`;
   }
 }
-
-function renderControls() {}
 
 function handleSquareSelect(evt) {
   const cellIdx = boardEls.findIndex((boardEl) => boardEl === evt.target);
